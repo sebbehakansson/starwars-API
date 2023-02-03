@@ -1,0 +1,22 @@
+body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: aqua;
+    margin: 0;
+}
+h1{
+    justify-content: center;
+}
+#ul-people{
+    display: flex;
+    flex-direction: column; 
+    border: solid black 5px;
+    border-radius: 12px;
+}
+#ul-starships{
+    display: flex;
+    flex-direction: column;
+    border: solid black 5px;
+    border-radius: 12px;
+}

@@ -8,19 +8,45 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const url = 'https://swapi.dev/api/people/1/';
-const display = document.getElementById('display');
-const categories = document.getElementById('categories');
-function pepole() {
+const urlPeople = 'https://swapi.dev/api/people/';
+const urlStarships = 'https://swapi.dev/api/starships/';
+const people = document.getElementById('people');
+const starships = document.getElementById('starships');
+const showobject = document.getElementById('display');
+let listPeople = document.getElementById('ul-people');
+let liststarships = document.getElementById('ul-starships');
+let arrPeople = [];
+function getPepole() {
     return __awaiter(this, void 0, void 0, function* () {
-        const respons = yield fetch(url);
+        const respons = yield fetch(urlPeople);
         const data = yield respons.json();
-        display.innerHTML = data.results;
+        let person;
+        for (person of data.results) {
+            let point = document.createElement('li');
+            point.innerHTML = person.name;
+            listPeople.append(point);
+            arrPeople.push(person);
+            point.addEventListener('click', function (event) {
+                event.preventDefault;
+                let found = arrPeople.find(p => this.innerText === p.name);
+                console.log(found);
+            });
+        }
     });
 }
-function getPeople(pepole) {
-    for (let i = 0; i < pepole.results.lenght; i++) {
-        console.log(pepole, results.lenght);
-    }
+getPepole();
+function getStarships() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const respons = yield fetch(urlStarships);
+        const data = yield respons.json();
+        for (const starships of data.results) {
+            let point = document.createElement('li');
+            point.innerHTML = starships.name;
+            liststarships.append(point);
+            point.addEventListener('click', (event) => {
+                event.preventDefault();
+            });
+        }
+    });
 }
-getPeople();
+getStarships();
