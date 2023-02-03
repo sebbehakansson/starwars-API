@@ -43,7 +43,7 @@ async function getPepole(){
             point.addEventListener('click', function(event){
                 event.preventDefault;
                 let found = arrPeople.find(p => this.innerText===p.name);
-                console.log(found);
+                console.log(found); 
             });
             
         }
