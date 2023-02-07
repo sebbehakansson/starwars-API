@@ -6,17 +6,29 @@ body{
     margin: 0;
 }
 h1{
-    justify-content: center;
+    text-align: center;
 }
 #ul-people{
     display: flex;
     flex-direction: column; 
+    height: 28vh;
+    width: 20vh;
     border: solid black 5px;
     border-radius: 12px;
 }
 #ul-starships{
     display: flex;
     flex-direction: column;
+    height: 28vh;
+    width: 20vh;
+    border: solid black 5px;
+    border-radius: 12px;
+}
+#display{
+    display: flex;
+    flex-direction: column;
+    height: 28vh;
+    width: 15vh;
     border: solid black 5px;
     border-radius: 12px;
 }
