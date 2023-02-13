@@ -31,13 +31,30 @@ type characters = {
     url: string
 };
 
-let arrPeople: characters[]=[];
+type spacerockets = {
+    name: string, 
+    model: string, 
+    manufacturer: string, 
+    cost_in_credits: string, 
+    length: string, 
+    max_atmosphering_speed: string, 
+    crew: string, 
+    passengers: string, 
+    cargo_capacity: string, 
+    consumables: string, 
+    hyperdrive_rating: string, 
+    MGLT: string, 
+    starship_class: string, 
+    pilots: string[], 
+    films: string[]
+};
 
-//let arrStarship[];
+let arrPeople: characters[]=[];
+let arrStarship: spacerockets[]=[];
+
 
 async function getPepole(){
     const respons = await fetch(urlPeople);
-    
     const data = await respons.json();
     let person: characters;
     for (person of data.results) {
@@ -50,7 +67,7 @@ async function getPepole(){
                 let found = arrPeople.find(p => this.innerText===p.name);
                 if(found != undefined){
                     showobject.innerHTML = "";
-                    let name = document.createElement('p')
+                    let name = document.createElement('p');
                     let height = document.createElement('p');
                     let mass = document.createElement('p');
                     name.innerHTML = found.name;
@@ -63,24 +80,37 @@ async function getPepole(){
             });
            
     }
-}
+};
 
 getPepole();
 
 async function getStarships() {
     const respons = await fetch(urlStarships);
     const data = await respons.json();
-
-for (const starships of data.results) {
+    let starships: spacerockets;
+for (starships of data.results) {
     let point = document.createElement('li');
     point.innerHTML = starships.name; 
     liststarships.append(point)
-    point.addEventListener('click', (event) =>{
+    arrStarship.push(starships)
+    point.addEventListener('click', function(event){
         event.preventDefault();
-
-    })
+        let found = arrStarship.find(s => this.innerText===s.name);
+        if(found != undefined){
+            showobject.innerHTML = "";
+            let name = document.createElement('p');
+            let lenght = document.createElement('p');
+            let crew = document.createElement('p');
+            name.innerHTML = found.name;
+            lenght.innerHTML = found.length;
+            crew.innerHTML = found.max_atmosphering_speed;
+            showobject.append('Name:', name);
+            showobject.append('Lenght:', lenght);
+            showobject.append('Crew:', crew);
+        }
+    });
 }
-}
+};
 
 getStarships();
 
@@ -89,26 +119,35 @@ buttonElement.addEventListener('click', async (event) =>{
     event.preventDefault();
     const response = await fetch(urlPeopleSearch + inPutElement.value);
     const data = await response.json();
-    console.log(data.results);
-    data.results.forEach((result: {
-        height: string,
-        name: string,
-        mass: string,
-        birth_year: string,
-    }) => {
-        const characterHTML = `
+    if(inPutElement.value === "")
+     {
+        alert('Pleas type somthing!');
+   
+    }else if(inPutElement.value === "count:[0]" ) {
+       alert('Character not found')
+    } else {
+        data.results.forEach((result: {
+            height: string,
+            name: string,
+            mass: string,
+            birth_year: string,
+        }) => {
+            let article = document.createElement("article");
+            article.setAttribute("class", "char-card");
+
+            article.innerHTML = `
+            
+            
+        <p>Name: ${result.name}</p>
+        <p>Height: ${result.height}</p>
+        <p>Weight: ${result.mass}</p>
+        <p>Birthyear: ${result.birth_year}</p>
+       `;
         
-    <article class="char">
-    <p>Name: ${result.name}</p>
-    <p>Height: ${result.height}</p>
-    <p>Weight: ${result.mass}</p>
-    <p>Birthyear: ${result.birth_year}</p>
-    </article>`;
-
-
-    showobject.innerHTML =characterHTML;
-    });
-//}
+        
+        showobject.append(article);
+        });
+    }
 });
 
     

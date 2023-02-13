@@ -8,18 +8,32 @@
     <script defer src="../dist/app.js"></script>
     <title>Document</title>
 </head>
-<h1>Star Wars</h1>
+
 <body>
-    
-    <input type="text" name="search" id="search">
-    <button>search</button>
-    <section id="people-search"></section>
-    <section id="people">
-        <ul id="ul-people"></ul>
-    </section><br>
-    <section id="starships">
-        <ul id="ul-starships"></ul>
-    </section>
-    <section id="display"></section>
+    <header>
+        <div>
+            <h1>Star Wars</h1>
+        </div>
+    </header>
+        <section id="people-search">
+            <div>
+                <input type="text" name="search" id="search" placeholder="Character name">
+                <button>search</button>
+            </div>
+        </section>
+    <main>
+        <section id="people">
+            <h3>Name</h3>
+            <ul id="ul-people"></ul>
+        </section>
+        <section id="starships">
+            <h3>Starships</h3>
+            <ul id="ul-starships"></ul>
+        </section>
+        <section id="display">
+           <h3>Info</h3>
+        </section>
+    </main>
+   
 </body>
 </html>
