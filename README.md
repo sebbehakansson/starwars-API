@@ -1,4 +1,4 @@
 # starwars-API
 en sida om star wars.
-använder mig av typescript, ajax och sass
-mer info kommer
+har använt mig av typescript, ajax, sass och byggt mot ett api  
+du behöver ha typescript för att kunna köra och kompilera koden
